@@ -1,0 +1,312 @@
+<html>
+<head>
+<title>
+abc</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+
+  body {
+      font-family: Arial, Helvetica, sans-serif;
+      
+      flex-wrap: wrap;
+
+    }
+.navbar {
+  overflow: hidden;  
+  background-color: #333;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+td,th{
+    border:2px solid blue;
+    padding:7px;
+}
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: white;
+  background:black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+.hide{
+    display:none;
+}
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+.btn1 {
+      /* margin-left: 810px; */
+      display: inline;
+      height: 30px;
+      width: 80px;
+      color: #fff;
+      font-size: 18px;
+      background-color: #28a745;
+      background-image: none;
+      border: none;
+      flex-wrap: wrap;
+
+    }
+
+    .btn2 {
+      /* margin-left: 2px; */
+      display: inline;
+      height: 30px;
+      width: 80px;
+      color: #fff;
+      font-size: 18px;
+      background-color: #28a745;
+      background-image: none;
+      border: none;
+      flex-wrap: wrap;
+
+    }
+
+    .btn3 {
+      /* margin-left: 2px; */
+      display: inline;
+      height: 30px;
+      width: 80px;
+      color: #fff;
+      font-size: 18px;
+      background-color: #28a745;
+      background-image: none;
+      border: none;
+      flex-wrap: wrap;
+
+    }
+
+    .btn4 {
+      /* margin-left: 2px; */
+      display: inline;
+      height: 30px;
+      width: 80px;
+      color: #fff;
+      font-size: 18px;
+      background-color: #28a745;
+      background-image: none;
+      border: none;
+      flex-wrap: wrap;
+    }
+
+      .btn1 :hover {
+        color: #C70039;
+        background-color: #C70039;
+
+      }
+
+       .alg{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      
+    }
+
+    td,
+    th {
+      border: 2px solid blue;
+      padding: 7px;
+      flex-wrap: wrap;
+     
+    }
+
+        .dis {
+      /* margin-left: 50rem;
+      margin-radius: 100px; */
+      height: 30px;
+      width: 350px;
+      border: 5px solid #BAFC8A;
+      font-size: large;
+      color: green;
+      
+      flex-wrap: wrap;
+    }
+
+        .record{
+      font-family: 'Dancing Script', cursive;
+      /* margin-left: 300px; */
+      font-size: 50px;
+      font-weight: 700px;
+      color: blue;
+      flex-wrap: wrap;
+    }
+      .head {
+      font-family: 'Lobster', cursive;
+      /* margin-left: 300px; */
+      font-size: 80px;
+      font-weight: 900px;
+      color: #578734;
+      flex-wrap: wrap;
+    }
+  
+</style>
+</head>
+<body>
+
+<div class="navbar">
+   <div class="dropdown">
+    <!--<button class="dropbtn">Student Details
+    </button>
+    <div class="dropdown-content"> -->
+      <a href="category">Student Details</a>
+      <!-- <a href="room_master">Room Master</a>
+      <a href="#">Service Master</a>
+    </div> -->
+  </div>
+
+    <div class="dropdown">
+    <!-- <button class="dropbtn">Transaction
+    </button>
+    <div class="dropdown-content"> -->
+      <a href="room_master">Results</a>
+      <!-- <a href="checkout">check out</a>
+      <a href="#">Room Service</a>
+    </div> -->
+  </div>
+
+  <a href="logoutt">Logout</a> 
+</div>
+ <div class="alg">
+
+<br>
+<form method='POST' action='save2'>
+
+{% csrf_token %}
+
+
+<span class="head">Results</span><br>
+<select class='dis' name='roomcat' disabled required>
+<option value='' disabled selected>Name</option>
+{% for val in data %}
+<option value={{val}}>{{val}}</option> 
+{% endfor %}  
+</select><br><br>
+
+
+<select class='dis' name='status' disabled required>
+<option value='' disabled selected>Subject</option>
+<option value='0'>Algebra</option>
+<option value='1'>Geometry</option>
+</select><br><br>
+<input class='dis' type='text' placeholder='Marks' name='capacity' required disabled></input><br>
+<br><input class='dis' id="ch" type='text' placeholder='Remarks' name='room_no' disabled required onfocusout="checking()"></input>
+<br></br>
+<input class='btn1' id='add' type='button' value='Add' onclick='unhide()'></input> 
+<input class='btn1' type='reset' value='clear'></input>
+<input class='btn1' type='submit' value='save'></input>  
+<input class='btn1' type='button' value='Delete' onclick="show()"></input> 
+</form>
+
+<form method='POST' action='delete'>
+
+{% csrf_token %}
+{%if elements%}
+<span class="record">Records</span>
+<table style="padding:10px; border:2px solid black;">
+<tr>
+
+<th>Remarks</th>
+<th>Subject</th>
+<th>Marks</th>
+<th>Names</th>
+<th class="hide">Select</th>
+</tr>
+{% for ele in elements %}
+<tr>
+<td class="checking">{{ele.room_no}}</td>
+<td>{{ele.status}}</td>
+<td>{{ele.capacity}}</td>
+<td>{{ele.room_cat}}</td>
+<td class="hide"><input type="checkbox" name="check[]" value={{ele.room_no}}></input></td>
+</tr>
+{% endfor %}
+</table>
+{%endif%}
+<br>
+<input class="hide" type="submit" value="Delete"/>
+</form>
+</div>
+<script> 
+    function unhide()
+    {
+        var disabled=document.getElementsByClassName('dis');
+        for(var i=0;i<disabled.length;i++)
+        {
+            disabled[i].disabled=false;
+        }
+    }
+    function show()
+{
+   var coll =  document.getElementsByClassName('hide');
+   for(var i=0; i<coll.length; i++)
+    {
+        coll[i].style.display = "block";
+    }
+}
+
+function checking()
+{
+  var tocheck=document.getElementById('ch').value;
+  
+  var a = document.getElementsByClassName('checking');
+  for(var i=0;i<a.length;i++)
+  {
+    if(a[i].innerHTML==tocheck)
+    {
+      alert('Category Code Already Exist')
+      document.getElementById('ch').value='';
+      document.getElementById('ch').focus();
+      break;
+    }
+  }
+  
+}
+ </script>
+</body>
+</html>
